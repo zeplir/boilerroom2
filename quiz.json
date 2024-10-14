@@ -1,0 +1,104 @@
+[
+    {
+      "question": "What is the capital of France?",
+      "answers": [
+        "Paris",
+        "Berlin",
+        "Madrid",
+        "Rome",
+        "Lisbon"
+      ]
+    },
+    {
+      "question": "Which planet is known as the Red Planet?",
+      "answers": [
+        "Earth",
+        "Mars",
+        "Venus",
+        "Jupiter",
+        "Saturn"
+      ]
+    },
+    {
+      "question": "What is the largest ocean on Earth?",
+      "answers": [
+        "Atlantic Ocean",
+        "Indian Ocean",
+        "Arctic Ocean",
+        "Southern Ocean",
+        "Pacific Ocean"
+      ]
+    },
+    {
+      "question": "Who wrote the play 'Romeo and Juliet'?",
+      "answers": [
+        "William Shakespeare",
+        "Charles Dickens",
+        "George Orwell",
+        "Jane Austen",
+        "Mark Twain"
+      ]
+    },
+    {
+      "question": "Which element has the chemical symbol 'O'?",
+      "answers": [
+        "Oxygen",
+        "Gold",
+        "Osmium",
+        "Olinium",
+        "Oganesson"
+      ]
+    },
+    {
+      "question": "What is the smallest country in the world?",
+      "answers": [
+        "Monaco",
+        "San Marino",
+        "Vatican City",
+        "Liechtenstein",
+        "Malta"
+      ]
+    },
+    {
+      "question": "How many continents are there on Earth?",
+      "answers": [
+        "Five",
+        "Six",
+        "Seven",
+        "Eight",
+        "Nine"
+      ]
+    },
+    {
+      "question": "In which year did the Titanic sink?",
+      "answers": [
+        "1910",
+        "1912",
+        "1914",
+        "1916",
+        "1918"
+      ],
+      "correct_answer": "1912"
+    },
+    {
+      "question": "What is the hardest natural substance on Earth?",
+      "answers": [
+        "Gold",
+        "Iron",
+        "Diamond",
+        "Ruby",
+        "Sapphire"
+      ]
+    },
+    {
+      "question": "Which artist painted the 'Mona Lisa'?",
+      "answers": [
+        "Vincent van Gogh",
+        "Leonardo da Vinci",
+        "Pablo Picasso",
+        "Michelangelo",
+        "Claude Monet"
+      ]
+    }
+  ]
+  
