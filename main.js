@@ -10,15 +10,33 @@ let ansButton2 = document.getElementById("answer-2");
 let ansButton3 = document.getElementById("answer-3");
 let ansButton4 = document.getElementById("answer-4");
 let ansButton5 = document.getElementById("answer-5");
+let startButton = document.getElementById("start-button");
+let htmlPoints = document.getElementById("points");
+let container = document.getElementById("container");
 
-const getQuiz = async () => {
-    const response = await fetch("quiz.json");
-    const data = await response.json();
-    return data;
-
+function updatePoints() {
+    htmlPoints.innerHTML = "You have " + totalPoints + " points";
 }
 
-let jsonData = getQuiz();
+startButton.addEventListener("click", () => {
+    container.classList.remove("hidden");
+    updateQuestion();
+    startButton.style.display = "none";
+});
+
+function updateQuestion() {
+    fetch('./quiz.json')
+    .then(res => res.json())
+    .then(data => {
+        question.innerHTML = data[currentQuestion].question;
+        ansButton1.innerHTML = data[currentQuestion].answers[0];
+        ansButton2.innerHTML = data[currentQuestion].answers[1];
+        ansButton3.innerHTML = data[currentQuestion].answers[2];
+        ansButton4.innerHTML = data[currentQuestion].answers[3];
+        ansButton5.innerHTML = data[currentQuestion].answers[4];
+});
+
+}
 
 ansButton1.addEventListener("click", () => {
     if(ansButton1.value == answerArr[currentQuestion]) {
@@ -76,6 +94,7 @@ ansButton5.addEventListener("click", () => {
 })
 
 function nextQuestion() {
+    updateQuestion();
     currentQuestion++;
     ansButton1.style.display = "";
     ansButton2.style.display = "";
@@ -86,13 +105,14 @@ function nextQuestion() {
     totalPoints += currentPoints + (minusCounter * -2);
     console.log("Total points: " + totalPoints);
     minusCounter = 0;
+    updatePoints();
 
     if(currentQuestion > 9) {
-        ansButton1.style.display = "hidden";
-        ansButton2.style.display = "hidden";
-        ansButton3.style.display = "hidden";
-        ansButton4.style.display = "hidden";
-        ansButton5.style.display = "hidden";
+        ansButton1.style.display = "none";
+        ansButton2.style.display = "none";
+        ansButton3.style.display = "none";
+        ansButton4.style.display = "none";
+        ansButton5.style.display = "none";
         console.log("You scored " + totalPoints + " points!");
     }
 }
