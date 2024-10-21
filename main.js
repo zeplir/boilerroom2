@@ -56,6 +56,7 @@ startButton.addEventListener('click', () => {
 
 function startCountdown() {
   countdown = 60; // Reset the countdown to 60
+  currentPoints = 10; // Reset the points to 10
   timer.style.color = ''; // Reset the timer color
   timer.classList.remove('flash');
   timer.innerText = String(countdown);
@@ -66,7 +67,7 @@ function startCountdown() {
 
     if (countdown <= 50) {
       if (countdown % 10 === 0) {
-        currentPoints -= 2;
+        currentPoints--; // Deduct points every 10 seconds
       }
     }
 
@@ -81,6 +82,7 @@ function startCountdown() {
     if (countdown === 0) {
       clearInterval(countdownInterval);
       console.log("Time's up!");
+      currentPoints = 0; // Set points to 0 if time runs out
       nextQuestion(); // Automatically go to the next question if time runs out
     }
   }, 1000);
@@ -122,18 +124,33 @@ function nextQuestion() {
   if (currentQuestion <= numberOfQuestions) {
     clearInterval(countdownInterval);
 
+    // Calculate points based on the current question
+    let pointsEarned = currentPoints + minusCounter * -2;
+
+    // Prevent making negative points larger by adding positive points
+    if (totalPoints < 0 && pointsEarned > 0) {
+      totalPoints += Math.max(0, pointsEarned); // Only add positive points
+    } else {
+      totalPoints += pointsEarned; // Normal addition if score is not negative
+    }
+
+    console.log('Total points: ' + totalPoints);
+    updatePoints(); // Update the points display
+
+    currentPoints = 10; // Reset points for the new question
     currentQuestion++;
+
+    // Reset the buttons for the next question
     ansButton1.style.display = '';
     ansButton2.style.display = '';
     ansButton3.style.display = '';
     ansButton4.style.display = '';
     ansButton5.style.display = '';
 
-    totalPoints += currentPoints + minusCounter * -2;
-    console.log('Total points: ' + totalPoints);
-    minusCounter = 0;
-    updatePoints();
-    startCountdown();
+    minusCounter = 0; // Reset penalty counter
+    startCountdown(); // Start the timer again
+
+    // Check if there are more questions, else end the game
     if (currentQuestion >= numberOfQuestions) {
       ansButton1.style.display = 'none';
       ansButton2.style.display = 'none';
