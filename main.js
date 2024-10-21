@@ -15,7 +15,7 @@ let htmlPoints = document.getElementById("points");
 let container = document.getElementById("container");
 
 function updatePoints() {
-    htmlPoints.innerHTML = "You have " + totalPoints + " points";
+    htmlPoints.innerHTML = "Points: " + totalPoints;
 }
 
 startButton.addEventListener("click", () => {
