@@ -2,10 +2,12 @@ let answerArr = [0, 1, 4, 0, 0, 2, 2, 1, 2, 1];
 let minusCounter = 0;
 let currentQuestion = 0;
 let totalPoints = 0;
+let oldPoints = 0;
 let currentPoints = 10;
 let countdown = 60;
 let countdownInterval;
 let numberOfQuestions;
+let operator;
 
 let question = document.getElementById('question');
 let ansButton1 = document.getElementById('answer-1');
@@ -19,7 +21,30 @@ let container = document.getElementById('container');
 const timer = document.getElementById('timer');
 
 function updatePoints() {
-  htmlPoints.innerHTML = 'You have ' + totalPoints + ' points';
+  if (currentQuestion > 0) {
+    if (totalPoints > oldPoints) {
+      htmlPoints.style.color = 'green';
+      operator = '+';
+    } else if (totalPoints < oldPoints) {
+      htmlPoints.style.color = 'red';
+      operator = '';
+    } else {
+      htmlPoints.style.color = '';
+      operator = '';
+    }
+  } else {
+    htmlPoints.style.color = '';
+    operator = '';
+  }
+  htmlPoints.innerText =
+    'You have ' +
+    totalPoints +
+    ' points' +
+    ' (' +
+    operator +
+    (totalPoints - oldPoints) +
+    ')';
+  oldPoints = totalPoints;
 }
 
 startButton.addEventListener('click', () => {
